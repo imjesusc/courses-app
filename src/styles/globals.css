@@ -4,7 +4,7 @@
 
 @layer base {
   @media (prefers-color-scheme: dark) {
-    :root {
+    .dark {
       --background: 0 0% 100%;
       --foreground: 240 10% 3.9%;
       --card: 0 0% 100%;
@@ -28,7 +28,9 @@
     }
   }
 
-  .dark {
+  :root {
+    --radius: 0.5rem;
+
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 95%;
     --card: 24 9.8% 10%;
@@ -62,6 +64,6 @@
   }
 
   body {
-    @apply bg-background text-foreground overflow-y-auto overflow-x-hidden;
+    @apply text-foreground overflow-y-auto overflow-x-hidden;
   }
 }
