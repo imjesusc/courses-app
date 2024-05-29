@@ -4,24 +4,20 @@ import { Icons } from '@/components/global'
 import { Button, Checkbox, Label } from '@/components/ui'
 import { courseCategories } from '@/config'
 import { cn, hasItems } from '@/utilities'
-import { useState } from 'react'
+import { useFilterCourses } from '../hooks/useFilterCourses'
 
 interface ExploreAsideProps {
   className?: string
 }
 export const ExploreAside = ({ className }: ExploreAsideProps) => {
-  const [field, setField] = useState<string[]>([])
-
-  const handleReset = () => {
-    setField([])
-  }
+  const { handleReset, handleUpdateCategory, categories } = useFilterCourses()
 
   return (
     <aside className={cn('flex flex-col gap-5', className)}>
       <header className="flex items-center gap-4">
         <h2 className="text-lg font-semibold">Categorias</h2>
-        {hasItems(field) ? (
-          <Button onClick={handleReset} variant="outline" size="icon">
+        {hasItems(categories) ? (
+          <Button type="reset" onClick={handleReset} variant="outline" size="icon">
             <Icons.x size={18} />
           </Button>
         ) : (
@@ -36,11 +32,10 @@ export const ExploreAside = ({ className }: ExploreAsideProps) => {
             <li key={item.id}>
               <Label className="flex cursor-pointer items-center gap-2">
                 <Checkbox
-                  checked={field?.includes(item.slug)}
-                  onCheckedChange={(checked: boolean) => {
-                    return checked
-                      ? setField([...field, item.slug])
-                      : setField(field?.filter((value) => value !== item.slug))
+                  defaultChecked={categories.includes(item.slug)}
+                  checked={categories.includes(item.slug)}
+                  onCheckedChange={() => {
+                    handleUpdateCategory(item.slug)
                   }}
                 />
                 <span>{item.label}</span>
