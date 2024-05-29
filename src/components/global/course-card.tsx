@@ -1,12 +1,13 @@
 'use client'
 
+import { CourseCardModel } from '@/models'
 import { cn } from '@/utilities'
 import Image from 'next/image'
 import Link from 'next/link'
-import image from '../../assets/images/image.png'
+import fallback from '../../assets/images/image.png'
 import { Icons } from './icons'
 
-export const CourseCard = () => {
+export const CourseCard = ({ id, title, views, createdAt, author, images }: CourseCardModel) => {
   return (
     <article
       className={cn('group relative overflow-hidden rounded-2xl duration-100 hover:bg-secondary hover:opacity-100')}
@@ -25,7 +26,7 @@ export const CourseCard = () => {
           <header>
             <figure className="h-full w-full overflow-hidden rounded-lg">
               <Image
-                src={image}
+                src={images.default || fallback}
                 alt="Cursos en línea"
                 className="aspect-video h-full w-full rounded-lg bg-background object-cover"
               />
@@ -33,14 +34,14 @@ export const CourseCard = () => {
           </header>
 
           <footer className="grid gap-1">
-            <h3 className="text-sm font-semibold">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum ducimus vfacilis tempore.
-            </h3>
-            <small className="text-muted-foreground">canal</small>
+            <h3 className="text-sm font-semibold">{title}</h3>
+            <small className="text-muted-foreground">{author}</small>
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
-              <small>4 vistas</small>
+              <small>
+                {views} {views === 1 ? 'view' : 'views'}
+              </small>
               <span>•</span>
-              <small>2 horas</small>
+              <small>{createdAt}</small>
             </div>
           </footer>
         </div>
