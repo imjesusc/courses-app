@@ -9,11 +9,15 @@
 # testing
 /coverage
 
+migrations
+dev.db-journal
+dev.db
+
 # next.js
 /.next/
 /out/
 
-
+.env*
 .env.local
 public
 dist
