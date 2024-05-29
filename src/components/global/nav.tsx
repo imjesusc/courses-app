@@ -1,26 +1,8 @@
 'use client'
 
+import { navLinks } from '@/config'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
-const navLinks = [
-  {
-    label: 'Inicio',
-    href: '/'
-  },
-  {
-    label: 'Populares',
-    href: '/populares'
-  },
-  {
-    label: 'Explorar',
-    href: '/explorar'
-  },
-  {
-    label: 'Mi lista',
-    href: '/mi-lista'
-  }
-]
 
 export const Nav = () => {
   const pathname = usePathname()
