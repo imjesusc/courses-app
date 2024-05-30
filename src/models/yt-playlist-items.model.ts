@@ -22,7 +22,7 @@ export interface ytPlaylistItemDetailsModel {
 }
 
 export interface ytPlaylistItemSnippetModel {
-  publishedAt: Date
+  publishedAt: string
   channelId: string
   title: string
   description: string
