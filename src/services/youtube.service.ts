@@ -22,9 +22,12 @@ export const getPlaylistsInfo = async (playlistIds: string[]): Promise<courseInf
   }
 }
 
-export const getCourseDetails = async (courseId: string): Promise<ytPlaylistItemsModel | undefined> => {
+export const getCourseDetails = async (
+  courseId: string,
+  params?: { maxResults?: string; pageToken?: string }
+): Promise<ytPlaylistItemsModel | undefined> => {
   try {
-    const url = `${SCHEMA.YT_URL}/playlistItems?key=${SCHEMA.YT_V3_API_KEY}&part=snippet&playlistId=${courseId}&maxResults=5`
+    const url = `${SCHEMA.YT_URL}/playlistItems?key=${SCHEMA.YT_V3_API_KEY}&part=snippet&playlistId=${courseId}&maxResults=${params?.maxResults || '9'}&pageToken=${params?.pageToken || ''}`
 
     const OPTIONS = { method: 'GET' }
 
