@@ -3,7 +3,7 @@
 import { Input } from '@/components/ui'
 import { cn } from '@/utilities'
 import { SearchIcon } from 'lucide-react'
-import { useFilterCourses } from '../hooks'
+import { useFilterCourses } from '../../../hooks'
 export const SearchCourse = () => {
   const { searchParams, handleSearch } = useFilterCourses()
 

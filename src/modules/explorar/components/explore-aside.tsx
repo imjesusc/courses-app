@@ -4,7 +4,7 @@ import { Icons } from '@/components/global'
 import { Button, Checkbox, Label } from '@/components/ui'
 import { courseCategories } from '@/config'
 import { cn, hasItems } from '@/utilities'
-import { useFilterCourses } from '../hooks/useFilterCourses'
+import { useFilterCourses } from '../../../hooks/use-filter-courses'
 
 interface ExploreAsideProps {
   className?: string
