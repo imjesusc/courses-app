@@ -3,6 +3,7 @@ export interface CourseDetails {
   title: string
   author: string
   playlistId: string
+  position: number
   images: {
     default: string
     medium: string

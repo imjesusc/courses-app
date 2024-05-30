@@ -1,6 +1,7 @@
 export * from './course-card.model'
 export * from './course-details.model'
 export * from './search-courses.model'
+export * from './select-course.model'
 export * from './yt-items'
 export * from './yt-playlist-items.model'
 export * from './yt-playlist.model'
