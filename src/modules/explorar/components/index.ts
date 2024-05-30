@@ -1,2 +1,5 @@
+export * from './aside-list-course-items'
+export * from './course-player'
 export * from './explore-aside'
+export * from './list-course-item'
 export * from './search-course'
