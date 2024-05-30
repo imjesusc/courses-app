@@ -61,6 +61,6 @@
   }
 
   body {
-    @apply overflow-y-auto overflow-x-hidden text-foreground;
+    @apply overflow-x-hidden overflow-y-scroll text-foreground;
   }
 }
