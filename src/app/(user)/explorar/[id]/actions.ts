@@ -5,6 +5,7 @@ import { db } from '@/config'
 import { CourseDetails } from '@/models'
 import { getCourseDetails } from '@/services'
 import { Prisma } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 
 export const getCourseDetail = async (playlistId: string): Promise<Prisma.CoursesGetPayload<{}> | undefined> => {
   try {
@@ -18,6 +19,19 @@ export const getCourseDetail = async (playlistId: string): Promise<Prisma.Course
   } catch (error) {
     console.error(error)
     return undefined
+  }
+}
+
+export const updateCourseViews = async (playlistId: string) => {
+  try {
+    await db.courses.update({
+      where: { courseId: playlistId },
+      data: { views: { increment: 1 } }
+    })
+
+    revalidatePath('/populares')
+  } catch (error) {
+    console.error(error)
   }
 }
 
