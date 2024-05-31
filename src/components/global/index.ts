@@ -1,5 +1,6 @@
 export * from './back-prev-link'
 export * from './course-card'
+export * from './course-card-skeleton'
 export * from './icons'
 export * from './mdx'
 export * from './nav'
