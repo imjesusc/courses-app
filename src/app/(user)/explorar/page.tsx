@@ -1,7 +1,7 @@
 import { CoursesCardSetSkeleton } from '@/components/global'
 import { ExploreAside, PaginationButtons, SearchCourse, SearchCourseCardSet } from '@/modules/explorar/components'
 import { Suspense } from 'react'
-import { getTotalCourses } from '../actions'
+import { getTotalCoursesAction } from './actions'
 
 export default async function ExplorePage({
   searchParams
@@ -14,7 +14,7 @@ export default async function ExplorePage({
   const currentPage = page || '1'
   const listCategories = categories?.split(',') || []
 
-  const totalCourses = await getTotalCourses()
+  const totalCourses = await getTotalCoursesAction()
 
   return (
     <div className="container flex items-start gap-6 py-10">
