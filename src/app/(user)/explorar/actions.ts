@@ -38,7 +38,7 @@ export const getTotalCoursesAction = async (): Promise<number | undefined> => {
 export const getSearchCoursesAction = async (params: GetCoursesParams) => {
   const { q, categories, page } = params
 
-  const take = 5
+  const take = 10
   const pageNumber = Number(page)
   const skip = isNaN(pageNumber) || pageNumber < 1 ? 0 : (pageNumber - 1) * take
 
