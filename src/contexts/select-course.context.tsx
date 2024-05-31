@@ -1,6 +1,6 @@
 'use client'
 
-import { getCourseItems } from '@/app/(user)/explorar/[id]/actions'
+import { getCourseItemsByIdAction } from '@/app/(user)/explorar/[id]/actions'
 import { CourseDetails, SelectCourseContextInterface, SelectCourseProviderProps } from '@/models'
 import { createContext, useCallback, useState } from 'react'
 
@@ -42,7 +42,7 @@ export function SelectCourseProvider({
     if (!courseInfo?.playlistId || !courseInfo?.nextToken || !courseInfo?.totalResults) return
     if (currentCourseItems?.length >= courseInfo?.totalResults || 0) return
 
-    const newItems = await getCourseItems(courseInfo.playlistId, {
+    const newItems = await getCourseItemsByIdAction(courseInfo.playlistId, {
       pageToken: courseInfo.nextToken,
       maxResults: '10'
     })

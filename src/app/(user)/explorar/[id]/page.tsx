@@ -1,14 +1,14 @@
 import { BackPrevLink } from '@/components/global'
 import { SelectCourseProvider } from '@/contexts'
 import { AsideListCourseItems, CoursePlayer } from '@/modules/explorar/components'
-import { getCourseDetail, getCourseItems, updateCourseViews } from './actions'
+import { getCourseDetailByIdAction, getCourseItemsByIdAction, updateCourseViewsAction } from './actions'
 
 export default async function ExploreSlugPage({ params }: { params: { id: string } }) {
   const { id } = params
 
-  await updateCourseViews(id)
-  const courseDetail = await getCourseDetail(id)
-  const { courseItems, courseInfo } = await getCourseItems(id)
+  const courseDetail = await getCourseDetailByIdAction(id)
+  const { courseItems, courseInfo } = await getCourseItemsByIdAction(id)
+  await updateCourseViewsAction(id)
 
   if (!courseDetail || !courseItems || !courseInfo)
     return (

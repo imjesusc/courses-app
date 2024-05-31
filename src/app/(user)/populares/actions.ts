@@ -1,9 +1,11 @@
+'use server'
+
 import { courseInfoAdapter } from '@/adapters'
 import { db } from '@/config'
 import { courseInfo } from '@/models'
 import { getPlaylistsInfo } from '@/services'
 
-export const getPopularCourses = async () => {
+export const getPopularCoursesAction = async () => {
   try {
     const courses = await db.courses.findMany({
       orderBy: {

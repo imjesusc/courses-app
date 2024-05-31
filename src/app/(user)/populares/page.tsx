@@ -1,8 +1,8 @@
 import { CourseCard } from '@/components/global'
-import { getPopularCourses } from './actions'
+import { getPopularCoursesAction } from './actions'
 
 export default async function PopularesPage() {
-  const popularCourses = await getPopularCourses()
+  const popularCourses = await getPopularCoursesAction()
 
   return (
     <div className="container pb-10 pt-4">

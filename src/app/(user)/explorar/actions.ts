@@ -26,7 +26,7 @@ export const createCourse = async () => {
   }
 }
 
-export const getTotalCourses = async (): Promise<number | undefined> => {
+export const getTotalCoursesAction = async (): Promise<number | undefined> => {
   try {
     const total = await db.courses.count()
     return total || 0
@@ -35,10 +35,10 @@ export const getTotalCourses = async (): Promise<number | undefined> => {
   }
 }
 
-export const getCourses = async (params: GetCoursesParams) => {
+export const getSearchCoursesAction = async (params: GetCoursesParams) => {
   const { q, categories, page } = params
 
-  const take = 5
+  const take = 10
   const pageNumber = Number(page)
   const skip = isNaN(pageNumber) || pageNumber < 1 ? 0 : (pageNumber - 1) * take
 

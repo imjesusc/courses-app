@@ -4,8 +4,8 @@ import { PrismaLibSQL } from '@prisma/adapter-libsql'
 import { PrismaClient } from '@prisma/client'
 
 const libsql = createClient({
-  url: SCHEMA.DB_URL,
-  authToken: SCHEMA.DB_TOKEN
+  url: SCHEMA.TURSO_DATABASE_URL || '',
+  authToken: SCHEMA.TURSO_AUTH_TOKEN || ''
 })
 
 const adapter = new PrismaLibSQL(libsql)

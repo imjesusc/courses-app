@@ -7,7 +7,9 @@ import { getCourseDetails } from '@/services'
 import { Prisma } from '@prisma/client'
 import { revalidatePath } from 'next/cache'
 
-export const getCourseDetail = async (playlistId: string): Promise<Prisma.CoursesGetPayload<{}> | undefined> => {
+export const getCourseDetailByIdAction = async (
+  playlistId: string
+): Promise<Prisma.CoursesGetPayload<{}> | undefined> => {
   try {
     const course = await db.courses.findUnique({
       where: { courseId: playlistId }
@@ -22,7 +24,7 @@ export const getCourseDetail = async (playlistId: string): Promise<Prisma.Course
   }
 }
 
-export const updateCourseViews = async (playlistId: string) => {
+export const updateCourseViewsAction = async (playlistId: string) => {
   try {
     await db.courses.update({
       where: { courseId: playlistId },
@@ -35,7 +37,7 @@ export const updateCourseViews = async (playlistId: string) => {
   }
 }
 
-export const getCourseItems = async (
+export const getCourseItemsByIdAction = async (
   playlistId: string,
   params?: { maxResults?: string; pageToken?: string }
 ): Promise<{
