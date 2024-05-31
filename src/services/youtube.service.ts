@@ -3,7 +3,7 @@ import { courseInfo, ytPlaylistItemsModel } from '@/models'
 
 export const getPlaylistsInfo = async (playlistIds: string[]): Promise<courseInfo[] | undefined> => {
   try {
-    const url = `${SCHEMA.YT_URL}/playlists?key=${SCHEMA.YT_V3_API_KEY}&part=snippet&id=${playlistIds.join(',')}&maxResults=9`
+    const url = `${SCHEMA.YT_URL}/playlists?key=${SCHEMA.YT_API_KEY}&part=snippet&id=${playlistIds.join(',')}&maxResults=9`
 
     const OPTIONS = { method: 'GET' }
 
@@ -25,7 +25,7 @@ export const getCourseDetails = async (
   params?: { maxResults?: string; pageToken?: string }
 ): Promise<ytPlaylistItemsModel | undefined> => {
   try {
-    const url = `${SCHEMA.YT_URL}/playlistItems?key=${SCHEMA.YT_V3_API_KEY}&part=snippet&playlistId=${courseId}&maxResults=${params?.maxResults || '9'}&pageToken=${params?.pageToken || ''}`
+    const url = `${SCHEMA.YT_URL}/playlistItems?key=${SCHEMA.YT_API_KEY}&part=snippet&playlistId=${courseId}&maxResults=${params?.maxResults || '9'}&pageToken=${params?.pageToken || ''}`
 
     const OPTIONS = { method: 'GET' }
 
