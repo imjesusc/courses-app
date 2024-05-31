@@ -13,7 +13,7 @@ export const Nav = () => {
           <ul className="flex items-center gap-6">
             {navLinks.map(({ label, href }) => (
               <li key={label}>
-                <Link className={pathname === href ? 'text-primary' : ''} href={href}>
+                <Link className={pathname === href ? 'text-muted-foreground' : ''} href={href}>
                   {label}
                 </Link>
               </li>

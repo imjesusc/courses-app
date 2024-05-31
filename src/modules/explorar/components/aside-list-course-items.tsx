@@ -10,7 +10,7 @@ export const AsideListCourseItems = ({ courseDetail }: { courseDetail: Prisma.Co
 
   return (
     <aside className="flex w-[300px] flex-col  gap-2">
-      <header className="h-[80px] rounded-md border p-2">
+      <header className="rounded-md border p-2">
         <h1 className="text-lg font-semibold">{courseDetail?.title}</h1>
         <p className="text-sm text-muted-foreground">
           {courseInfo.currentItem}/{courseInfo.totalResults}

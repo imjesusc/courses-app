@@ -30,8 +30,13 @@ export const CourseCard = ({ id, title, channelId, views, publishedAt, author, i
         <footer className="flex items-start">
           <div className="grid flex-1 gap-0.5">
             <h3 className="line-clamp-2 text-sm font-semibold">{title}</h3>
-            <a target="_blank" rel="noreferrer" href={`https://www.youtube.com/@${author.replaceAll(' ', '')}`}>
-              <small className="line-clamp-2 text-[11px] text-muted-foreground">@{author}</small>
+            <a
+              target="_blank"
+              className="w-max"
+              rel="noreferrer"
+              href={`https://www.youtube.com/@${author.replaceAll(' ', '')}`}
+            >
+              <small className="line-clamp-2 w-max text-[11px] text-muted-foreground">@{author}</small>
             </a>
 
             <div className="flex items-center gap-1 text-sm text-muted-foreground">
