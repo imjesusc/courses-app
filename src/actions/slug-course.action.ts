@@ -37,6 +37,18 @@ export const updateCourseViewsAction = async (playlistId: string) => {
   }
 }
 
+export const getFirstsCourseItemsByIdAction = async (playlistId: string): Promise<CourseDetails[] | undefined> => {
+  try {
+    const courses = await getCourseDetails(playlistId, { maxResults: '2' })
+    if (!courses) return
+
+    return courses.items.map(courseDetailsAdapter)
+  } catch (error) {
+    console.error(error)
+    return undefined
+  }
+}
+
 export const getCourseItemsByIdAction = async (
   playlistId: string,
   params?: { maxResults?: string; pageToken?: string }
