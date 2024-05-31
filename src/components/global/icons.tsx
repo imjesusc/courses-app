@@ -1,7 +1,9 @@
-import { Star, Trash2, X } from 'lucide-react'
+import { ArrowLeft, Badge, Star, Trash2, X } from 'lucide-react'
 
 export const Icons = {
   star: Star,
   trash: Trash2,
-  x: X
+  x: X,
+  badge: Badge,
+  arrowLeft: ArrowLeft
 }
