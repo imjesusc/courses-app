@@ -1,6 +1,5 @@
 import { SCHEMA } from '@/enviroments/schema'
 import { courseInfo, ytPlaylistItemsModel } from '@/models'
-import { revalidatePath } from 'next/cache'
 
 export const getPlaylistsInfo = async (playlistIds: string[]): Promise<courseInfo[] | undefined> => {
   try {
@@ -15,7 +14,6 @@ export const getPlaylistsInfo = async (playlistIds: string[]): Promise<courseInf
     }
 
     const data = (await response.json()) as { items: courseInfo[] }
-    revalidatePath('/explorar')
     return data.items
   } catch (error) {
     console.log(error)
