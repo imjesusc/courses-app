@@ -26,8 +26,21 @@ export const createCourse = async () => {
   }
 }
 
+export const getTotalCourses = async (): Promise<number | undefined> => {
+  try {
+    const total = await db.courses.count()
+    return total || 0
+  } catch (error) {
+    return undefined
+  }
+}
+
 export const getCourses = async (params: GetCoursesParams) => {
-  const { q, categories } = params
+  const { q, categories, page } = params
+
+  const take = 5
+  const pageNumber = Number(page)
+  const skip = isNaN(pageNumber) || pageNumber < 1 ? 0 : (pageNumber - 1) * take
 
   try {
     const courses = await db.courses.findMany({
@@ -36,7 +49,9 @@ export const getCourses = async (params: GetCoursesParams) => {
           q ? { title: { contains: q } } : {},
           hasItems(categories) ? { categories: { some: { slug: { in: categories } } } } : {}
         ]
-      }
+      },
+      skip,
+      take
     })
 
     const courseIds = courses.map((course) => course.courseId)
