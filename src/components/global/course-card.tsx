@@ -13,8 +13,8 @@ interface CourseCardProps extends CourseCardModel {
   url: string
 }
 
-export const CourseCard = ({ id, title, channelId, views, publishedAt, author, images, url }: CourseCardProps) => {
-  const { handleUpdateMyListCourse, checkCourseInList } = useMyListCourses()
+export const CourseCard = ({ id, title, playlistId, views, publishedAt, author, images, url }: CourseCardProps) => {
+  const { handleUpdateMyListCourse, checkCourseIsSaved } = useMyListCourses()
 
   return (
     <article className={cn('group relative overflow-hidden rounded-xl p-2 duration-100 hover:bg-secondary/20')}>
@@ -54,7 +54,7 @@ export const CourseCard = ({ id, title, channelId, views, publishedAt, author, i
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger
-                onClick={() => handleUpdateMyListCourse({ id, title, channelId, author, images, views, publishedAt })}
+                onClick={() => handleUpdateMyListCourse({ id, title, playlistId, author, images, views, publishedAt })}
                 className={cn(
                   'flex h-[36px] w-[36px] cursor-pointer items-center justify-center rounded-full',
                   'opacity-0 transition-opacity duration-200 group-hover:opacity-100'
@@ -63,12 +63,16 @@ export const CourseCard = ({ id, title, channelId, views, publishedAt, author, i
                 <Icons.star
                   className={cn(
                     'h-5 w-5',
-                    checkCourseInList(id) ? 'fill-muted-foreground text-muted-foreground' : 'text-muted-foreground'
+                    checkCourseIsSaved(playlistId)
+                      ? 'fill-muted-foreground text-muted-foreground'
+                      : 'text-muted-foreground'
                   )}
                   size={18}
                 />
               </TooltipTrigger>
-              <TooltipContent>{checkCourseInList(id) ? 'Quitar de mi lista' : 'Agregar a mi lista'}</TooltipContent>
+              <TooltipContent>
+                {checkCourseIsSaved(playlistId) ? 'Quitar de mi lista' : 'Agregar a mi lista'}
+              </TooltipContent>
             </Tooltip>
           </TooltipProvider>
         </footer>
