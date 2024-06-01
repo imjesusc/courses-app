@@ -2,10 +2,18 @@ import { CourseCardModel } from '@/models'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
+export interface MyListCourseProgress extends CourseCardModel {
+  totalCourseItems?: number
+  completedCourseItems?: {
+    position: number
+    videoId: string
+  }[]
+}
+
 interface myListStoreInterface {
-  myCourses: CourseCardModel[]
+  myCourses: MyListCourseProgress[]
   savedCourses: CourseCardModel[]
-  setMyCourses: (data: CourseCardModel[]) => void
+  setMyCourses: (data: MyListCourseProgress[]) => void
   setSavedCourses: (data: CourseCardModel[]) => void
 }
 
