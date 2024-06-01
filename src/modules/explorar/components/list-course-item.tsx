@@ -5,8 +5,8 @@ import { ButtonHTMLAttributes } from 'react'
 
 interface ListCourseItemProps
   extends Omit<CourseDetails, 'playlistId' | 'videoId' | 'publishedAt' | 'description' | 'position'> {
-  onClick: ButtonHTMLAttributes<HTMLButtonElement>['onClick']
-  className: string
+  onClick?: ButtonHTMLAttributes<HTMLButtonElement>['onClick']
+  className?: string
 }
 
 export const ListCourseItem = ({ onClick, className, title, author, images }: ListCourseItemProps) => {

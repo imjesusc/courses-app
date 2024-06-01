@@ -1,4 +1,4 @@
-import { getSearchCoursesAction } from '@/app/(user)/explorar/actions'
+import { getSearchCoursesAction } from '@/actions'
 import { CourseCard } from '@/components/global'
 
 interface SearchCourseCardSetProps {
@@ -13,6 +13,7 @@ export const SearchCourseCardSet = async ({ term, listCategories, currentPage }:
     <main className="grid grid-cols-1 gap-y-5 tablet:grid-cols-2 laptop:grid-cols-3">
       {courses?.map((course, index) => (
         <CourseCard
+          url={`/explorar/${course.id}`}
           channelId={course.channelId}
           id={course.id}
           key={index}

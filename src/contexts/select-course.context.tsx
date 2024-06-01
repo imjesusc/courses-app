@@ -1,6 +1,6 @@
 'use client'
 
-import { getCourseItemsByIdAction } from '@/app/(user)/explorar/[id]/actions'
+import { getCourseItemsByIdAction } from '@/actions'
 import { CourseDetails, SelectCourseContextInterface, SelectCourseProviderProps } from '@/models'
 import { createContext, useCallback, useState } from 'react'
 
