@@ -1,6 +1,5 @@
 import { BackPrevLink, Mdx } from '@/components/global'
-import { Button } from '@/components/ui'
-import { CoursePreviewPlayer, ListCourseItem } from '@/modules/explorar/components'
+import { CourseButtonActions, CoursePreviewPlayer, ListCourseItem } from '@/modules/explorar/components'
 import { formatAncorsUtilite } from '@/utilities'
 import Link from 'next/link'
 import { getCourseDetailByIdAction, getFirstsCourseItemsByIdAction } from '../../../../actions'
@@ -8,18 +7,20 @@ import { getCourseDetailByIdAction, getFirstsCourseItemsByIdAction } from '../..
 export default async function ExploreSlugPage({ params }: { params: { id: string } }) {
   const { id } = params
 
-  const [courseDetail, firsCourseItem] = await Promise.all([
+  const [courseDetail, courseItems] = await Promise.all([
     getCourseDetailByIdAction(id),
     getFirstsCourseItemsByIdAction(id)
   ])
 
-  if (!courseDetail || !firsCourseItem)
+  if (!courseDetail || !courseItems)
     return (
       <>
         <BackPrevLink />
         Not course found
       </>
     )
+
+  const [firsCourseItem, secondCourseItem] = courseItems
 
   return (
     <>
@@ -34,9 +35,9 @@ export default async function ExploreSlugPage({ params }: { params: { id: string
             <div>
               <Link
                 className="block text-sm text-muted-foreground"
-                href={`https://youtube.com/@${firsCourseItem[0]?.author}`}
+                href={`https://youtube.com/@${firsCourseItem?.author}`}
               >
-                @{firsCourseItem[0]?.author}
+                @{firsCourseItem?.author}
               </Link>
 
               <small className="text-muted-foreground">
@@ -44,27 +45,31 @@ export default async function ExploreSlugPage({ params }: { params: { id: string
               </small>
             </div>
 
-            <footer className="flex gap-4">
-              <Button variant="outline">Iniciar Curso</Button>
+            <CourseButtonActions
+              courseItem={{
+                playlistId: firsCourseItem.playlistId,
+                id: firsCourseItem.playlistId,
+                title: firsCourseItem.title,
+                author: firsCourseItem.author,
+                images: firsCourseItem?.images,
+                views: courseDetail?.views,
+                publishedAt: firsCourseItem?.publishedAt
+              }}
+            />
 
-              <Button variant="secondary" className="rounded-full">
-                Guardar Curso
-              </Button>
-            </footer>
-
-            <CoursePreviewPlayer videoId={firsCourseItem[0]?.videoId || ''} />
+            <CoursePreviewPlayer videoId={firsCourseItem?.videoId || ''} />
 
             <ListCourseItem
               className="m-2 cursor-not-allowed opacity-50 shadow-2xl brightness-90"
-              images={firsCourseItem[1]?.images}
-              title={firsCourseItem[1]?.title}
-              author={firsCourseItem[1]?.author}
+              images={secondCourseItem?.images}
+              title={secondCourseItem?.title}
+              author={secondCourseItem?.author}
             />
           </section>
 
           <footer>
             <pre className="text-wrap font-sans text-sm">
-              <Mdx>{formatAncorsUtilite(firsCourseItem[0]?.description) || ''}</Mdx>
+              <Mdx>{formatAncorsUtilite(firsCourseItem?.description) || ''}</Mdx>
             </pre>
           </footer>
         </main>
