@@ -1,4 +1,5 @@
 export * from './aside-list-course-items'
+export * from './course-button-actions'
 export * from './course-player'
 export * from './course-preview-player'
 export * from './explore-aside'
