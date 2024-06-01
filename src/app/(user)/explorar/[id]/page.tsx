@@ -20,7 +20,7 @@ export default async function ExploreSlugPage({ params }: { params: { id: string
       </>
     )
 
-  const [firsCourseItem, secondCourseItem] = courseItems
+  const [firsCourseItem, secondCourseItem] = courseItems?.courseFirtsItem || []
 
   return (
     <>
@@ -46,6 +46,7 @@ export default async function ExploreSlugPage({ params }: { params: { id: string
             </div>
 
             <CourseButtonActions
+              totalCourseItems={courseItems?.totalResults || 0}
               courseItem={{
                 playlistId: firsCourseItem.playlistId,
                 id: firsCourseItem.playlistId,

@@ -37,12 +37,14 @@ export const updateCourseViewsAction = async (playlistId: string) => {
   }
 }
 
-export const getFirstsCourseItemsByIdAction = async (playlistId: string): Promise<CourseDetails[] | undefined> => {
+export const getFirstsCourseItemsByIdAction = async (
+  playlistId: string
+): Promise<{ courseFirtsItem?: CourseDetails[]; totalResults?: number } | undefined> => {
   try {
     const courses = await getCourseDetails(playlistId, { maxResults: '2' })
     if (!courses) return
 
-    return courses.items.map(courseDetailsAdapter)
+    return { courseFirtsItem: courses.items.map(courseDetailsAdapter), totalResults: courses.pageInfo.totalResults }
   } catch (error) {
     console.error(error)
     return undefined
