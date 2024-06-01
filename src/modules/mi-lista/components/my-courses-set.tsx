@@ -62,6 +62,7 @@ export const MyCoursesSet = () => {
           {myCourses?.map((course) => (
             <CarouselItem key={course.id} className={cn('mobile:basis-1/2 tablet:basis-1/3 laptop:basis-1/4')}>
               <CourseCard
+                variant={'secondary'}
                 url={`/mis-cursos/${course.playlistId}`}
                 playlistId={course.playlistId}
                 id={course.id}
