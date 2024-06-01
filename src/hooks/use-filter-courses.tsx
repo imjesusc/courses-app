@@ -1,3 +1,5 @@
+'use client'
+
 import { hasItems } from '@/utilities'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'

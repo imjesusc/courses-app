@@ -1,5 +1,5 @@
 import { CourseCard } from '@/components/global'
-import { getPopularCoursesAction } from './actions'
+import { getPopularCoursesAction } from '../../../actions'
 
 export default async function PopularesPage() {
   const popularCourses = await getPopularCoursesAction()
@@ -9,7 +9,8 @@ export default async function PopularesPage() {
       <main className="grid gap-y-6 tablet:grid-cols-3 laptop:grid-cols-4">
         {popularCourses?.map((course, index) => (
           <CourseCard
-            channelId={course.channelId}
+            url={`/explorar/${course.id}`}
+            playlistId={course.playlistId}
             id={course.id}
             key={index}
             title={course.title}

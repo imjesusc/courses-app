@@ -1,7 +1,7 @@
 import { CoursesCardSetSkeleton } from '@/components/global'
 import { ExploreAside, PaginationButtons, SearchCourse, SearchCourseCardSet } from '@/modules/explorar/components'
 import { Suspense } from 'react'
-import { getTotalCoursesAction } from './actions'
+import { getTotalCoursesAction } from '../../../actions'
 
 export default async function ExplorePage({
   searchParams

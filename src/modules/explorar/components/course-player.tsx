@@ -1,12 +1,14 @@
 'use client'
 
 import { Mdx } from '@/components/global'
+import { useMyListCourses } from '@/hooks'
+import { formatAncorsUtilite } from '@/utilities'
 import ReactPlayer from 'react-player'
-import { toast } from 'sonner'
 import { useSelectCourse } from '../../../hooks/use-select-course'
 
 export const CoursePlayer = () => {
   const { currentCourseItem, goToNextCourse } = useSelectCourse()
+  const { completedCourseClass } = useMyListCourses()
 
   return (
     <main className="flex flex-1 flex-col gap-4">
@@ -16,7 +18,7 @@ export const CoursePlayer = () => {
           width={'100%'}
           height={'100%'}
           onEnded={() => {
-            toast.success(`Clase ${currentCourseItem?.position} completado`)
+            completedCourseClass(currentCourseItem?.playlistId, currentCourseItem?.videoId, currentCourseItem?.position)
             goToNextCourse(currentCourseItem?.videoId)
           }}
           controls
@@ -29,7 +31,9 @@ export const CoursePlayer = () => {
           <h2 className="text-xl font-semibold">{currentCourseItem?.title}</h2>
         </header>
 
-        <Mdx className="text-sm">{currentCourseItem?.description}</Mdx>
+        <pre className="text-wrap font-sans text-sm">
+          <Mdx className="text-sm">{formatAncorsUtilite(currentCourseItem?.description)}</Mdx>
+        </pre>
       </section>
     </main>
   )

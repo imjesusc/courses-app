@@ -2,7 +2,7 @@ export interface CourseCardModel {
   id: string
   title: string
   author: string
-  channelId: string
+  playlistId: string
   images: {
     default: string
     medium: string
