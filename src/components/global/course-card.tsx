@@ -9,13 +9,17 @@ import fallback from '../../assets/images/image.png'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui'
 import { Icons } from './icons'
 
-export const CourseCard = ({ id, title, channelId, views, publishedAt, author, images }: CourseCardModel) => {
+interface CourseCardProps extends CourseCardModel {
+  url: string
+}
+
+export const CourseCard = ({ id, title, channelId, views, publishedAt, author, images, url }: CourseCardProps) => {
   const { handleUpdateMyListCourse, checkCourseInList } = useMyListCourses()
 
   return (
     <article className={cn('group relative overflow-hidden rounded-xl p-2 duration-100 hover:bg-secondary/20')}>
       <div className="flex flex-col gap-2">
-        <Link href={`/explorar/${id}`}>
+        <Link href={url}>
           <figure className="h-full w-full overflow-hidden rounded-lg">
             <Image
               src={images.standard || fallback}

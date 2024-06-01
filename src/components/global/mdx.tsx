@@ -1,6 +1,6 @@
 import { cn } from '@/utilities'
 import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 
 interface MdxProps {
   children: string
@@ -9,7 +9,7 @@ interface MdxProps {
 
 export const Mdx: React.FC<MdxProps> = ({ children, className }) => {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} className={cn(className)}>
+    <ReactMarkdown rehypePlugins={[rehypeRaw]} className={cn(className)}>
       {children}
     </ReactMarkdown>
   )
