@@ -2,7 +2,7 @@ import { CourseCardModel, courseInfo } from '@/models'
 
 export const courseInfoAdapter = (item: courseInfo): CourseCardModel => {
   const adapterCourse = {
-    id: item?.id,
+    id: item?.etag || '',
     title: item?.snippet?.title,
     author: item?.snippet?.channelTitle || 'Anonymous',
     channelId: item?.snippet?.channelId || '',
@@ -14,7 +14,8 @@ export const courseInfoAdapter = (item: courseInfo): CourseCardModel => {
       maxres: item?.snippet?.thumbnails?.maxres?.url || ''
     },
     views: item?.views || 0,
-    publishedAt: item?.snippet?.publishedAt
+    publishedAt: item?.snippet?.publishedAt,
+    playlistId: item?.id || ''
   }
 
   return adapterCourse
