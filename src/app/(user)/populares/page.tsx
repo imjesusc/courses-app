@@ -10,7 +10,7 @@ export default async function PopularesPage() {
         {popularCourses?.map((course, index) => (
           <CourseCard
             url={`/explorar/${course.id}`}
-            channelId={course.channelId}
+            playlistId={course.playlistId}
             id={course.id}
             key={index}
             title={course.title}
