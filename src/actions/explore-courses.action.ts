@@ -5,26 +5,6 @@ import { db } from '@/config'
 import { GetCoursesParams, courseInfo } from '@/models'
 import { getPlaylistsInfo } from '@/services'
 import { hasItems } from '@/utilities'
-import { revalidatePath } from 'next/cache'
-
-export const createCourse = async () => {
-  try {
-    await db.courses.create({
-      data: {
-        title: 'Curso de prueba',
-        courseId: crypto.randomUUID(),
-        views: 1,
-        categories: {
-          connect: [{ id: '124ab277-fec8-4215-9aba-5bdfcc136901' }]
-        }
-      }
-    })
-
-    revalidatePath('/')
-  } catch (error) {
-    console.log(error)
-  }
-}
 
 export const getTotalCoursesAction = async (): Promise<number | undefined> => {
   try {

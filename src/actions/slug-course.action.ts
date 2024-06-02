@@ -32,6 +32,7 @@ export const updateCourseViewsAction = async (playlistId: string) => {
     })
 
     revalidatePath('/populares')
+    revalidatePath('/explorar')
   } catch (error) {
     console.error(error)
   }
