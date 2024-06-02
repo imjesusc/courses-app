@@ -1,16 +1,21 @@
+import { Typography } from '@/components/global'
+
 export const HeroSection = () => {
   return (
-    <section className="grid gap-6 py-10">
+    <section className="grid place-content-center items-center gap-10 p-5 tablet:py-20">
       <header>
-        <h1 className=" my-5 text-center text-[clamp(4rem,5vw,8rem)] font-bold leading-none">Online courses</h1>
+        <Typography as="h1" size={'7xl'} className="text-balance text-center font-bold leading-none">
+          My Courses App
+        </Typography>
       </header>
 
-      <div className="flex justify-center">
-        <p className="balance max-w-[50ch] text-center text-base">
-          Courses Online es una plataforma web que recopila cursos gratuitos de YouTube, organizados por categorías.
-          Permite a los usuarios buscar y filtrar cursos, facilitando el acceso a contenido educativo de calidad.
-        </p>
-      </div>
+      <footer>
+        <Typography size={'base'} className="balance max-w-[50ch] text-center">
+          <span className="underline">My Courses App</span> es una plataforma web que recopila cursos gratuitos de
+          YouTube, organizados por categorías. Permite a los usuarios buscar y filtrar cursos, facilitando el acceso a
+          contenido educativo de calidad.
+        </Typography>
+      </footer>
     </section>
   )
 }
