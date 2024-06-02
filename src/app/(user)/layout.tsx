@@ -9,8 +9,8 @@ export default async function Layout({ children }: { children: React.ReactNode }
     <>
       <Nav>
         {user?.user?.email && (
-          <div className="flex items-center gap-6">
-            <nav className="flex items-center gap-6">
+          <div className="flex items-center gap-4 tablet:gap-6">
+            <nav>
               <Link href="/dashboard">Dashbaord</Link>
             </nav>
 

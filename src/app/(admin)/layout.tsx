@@ -1,7 +1,6 @@
 import { auth, signOut } from '@/auth'
 import { Nav } from '@/components/global'
 import { Button } from '@/components/ui'
-import Link from 'next/link'
 
 export default async function Layout({ children }: { children: React.ReactNode }) {
   const user = await auth()
@@ -9,11 +8,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     <>
       <Nav>
         {user?.user?.email && (
-          <div className="flex items-center gap-6">
-            <nav className="flex items-center gap-6">
-              <Link href="/dashboard">Dashbaord</Link>
-            </nav>
-
+          <div className="flex items-center">
             <form
               action={async () => {
                 'use server'
