@@ -2,7 +2,7 @@ import { BackPrevLink, Mdx } from '@/components/global'
 import { CourseButtonActions, CoursePreviewPlayer, ListCourseItem } from '@/modules/explorar/components'
 import { formatAncorsUtilite } from '@/utilities'
 import Link from 'next/link'
-import { getCourseDetailByIdAction, getFirstsCourseItemsByIdAction } from '../../../../actions'
+import { getCourseDetailByIdAction, getFirstsCourseItemsByIdAction, updateCourseViewsAction } from '../../../../actions'
 
 export default async function ExploreSlugPage({ params }: { params: { id: string } }) {
   const { id } = params
@@ -11,6 +11,7 @@ export default async function ExploreSlugPage({ params }: { params: { id: string
     getCourseDetailByIdAction(id),
     getFirstsCourseItemsByIdAction(id)
   ])
+  updateCourseViewsAction(id)
 
   if (!courseDetail || !courseItems)
     return (
