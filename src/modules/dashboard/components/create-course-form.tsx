@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import { createCourseAction } from '@/actions/dashboard.action'
 import {
   Button,
   Checkbox,
@@ -16,6 +17,7 @@ import {
   Input
 } from '@/components/ui'
 import { courseCategories } from '@/config'
+import { toast } from 'sonner'
 
 const CourseSchema = z.object({
   title: z.string().min(2, { message: 'Minimo 2 caracteres' }),
@@ -38,8 +40,21 @@ export const CreateCourseForm = () => {
     }
   })
 
-  const onSubmit = (data: z.infer<typeof CourseSchema>) => {
-    console.log(data)
+  const onSubmit = async (data: z.infer<typeof CourseSchema>) => {
+    const newCurse = {
+      title: data.title,
+      courseId: data.courseId,
+      categories: data.categories.map((category) => ({ slug: category }))
+    }
+    const res = await createCourseAction(newCurse)
+
+    if (res?.status === 200) {
+      form.reset()
+      toast.success(res.message)
+      return
+    }
+
+    toast.error(res?.message)
   }
 
   return (
