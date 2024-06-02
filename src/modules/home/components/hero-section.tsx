@@ -13,7 +13,7 @@ export const HeroSection = () => {
         <Typography size={'base'} className="balance max-w-[50ch] text-center">
           <span className="underline">My Courses App</span> es una plataforma web que recopila cursos gratuitos de
           YouTube, organizados por categorías. Permite a los usuarios buscar y filtrar cursos, facilitando el acceso a
-          contenido educativo de calidad.
+          contenido educativo.
         </Typography>
       </footer>
     </section>

@@ -6,9 +6,12 @@ import '../styles/globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Courses For You',
+  title: 'My Courses App',
   description:
-    'Courses Online es una plataforma web que recopila cursos gratuitos de YouTube, organizados por categorías. Permite a los usuarios buscar y filtrar cursos, facilitando el acceso a contenido educativo de calidad.'
+    'My Courses App es una plataforma web que recopila cursos gratuitos de YouTube, organizados por categorías. Permite a los usuarios buscar y filtrar cursos, facilitando el acceso acontenido educativo.',
+  icons: {
+    icon: '/logo.png'
+  }
 }
 
 export default function RootLayout({
