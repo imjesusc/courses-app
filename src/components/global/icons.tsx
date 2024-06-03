@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Badge, Ellipsis, Play, Star, Trash2, X } from 'lucide-react'
+import { AlignLeft, ArrowLeft, ArrowRight, Badge, Ellipsis, Play, Star, Trash2, X } from 'lucide-react'
 
 export const Icons = {
   star: Star,
@@ -8,5 +8,6 @@ export const Icons = {
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
   play: Play,
-  ellipsis: Ellipsis
+  ellipsis: Ellipsis,
+  alignLeft: AlignLeft
 }

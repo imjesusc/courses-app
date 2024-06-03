@@ -19,7 +19,6 @@ dev.db
 
 .env*
 .env.local
-public
 dist
 
 # production

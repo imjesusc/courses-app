@@ -10,13 +10,13 @@ interface SearchCourseCardSetProps {
 export const SearchCourseCardSet = async ({ term, listCategories, currentPage }: SearchCourseCardSetProps) => {
   const courses = await getSearchCoursesAction({ q: term, categories: listCategories, page: currentPage })
   return (
-    <main className="grid grid-cols-1 gap-y-5 tablet:grid-cols-2 laptop:grid-cols-3">
+    <main className="grid grid-cols-1 gap-y-4 tablet:grid-cols-2 tablet:gap-y-5 laptop:grid-cols-3">
       {courses?.map((course) => (
         <CourseCard
+          key={course.id}
           url={`/explorar/${course.playlistId}`}
           playlistId={course.playlistId}
           id={course.id}
-          key={course.id}
           title={course.title}
           author={course.author}
           images={course.images}

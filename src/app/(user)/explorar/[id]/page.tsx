@@ -1,4 +1,4 @@
-import { BackPrevLink, Mdx } from '@/components/global'
+import { BackPrevLink, Mdx, Typography } from '@/components/global'
 import { CourseButtonActions, CoursePreviewPlayer, ListCourseItem } from '@/modules/explorar/components'
 import { formatAncorsUtilite } from '@/utilities'
 import Link from 'next/link'
@@ -25,17 +25,21 @@ export default async function ExploreSlugPage({ params }: { params: { id: string
 
   return (
     <>
-      <BackPrevLink />
+      <BackPrevLink className="hidden tablet:block" />
       <div className="container space-y-10  pb-10 pt-5 ">
         <main className="grid items-start gap-4 tablet:grid-cols-2 tablet:gap-6 laptop:gap-10">
           <section className="flex flex-col gap-4">
-            <header>
-              <h2 className="laptop:6xl text-2xl font-bold tablet:text-4xl">{courseDetail.title}</h2>
+            <header className="flex flex-col gap-1">
+              <BackPrevLink text="Volver atrás" className="relative left-0 top-0 tablet:hidden" />
+
+              <Typography as={'h1'} size={'6xl'} className="line-clamp-3 font-bold">
+                {courseDetail.title}
+              </Typography>
             </header>
 
             <div>
               <Link
-                className="block text-sm text-muted-foreground"
+                className="block truncate text-sm text-muted-foreground"
                 href={`https://youtube.com/@${firsCourseItem?.author}`}
               >
                 @{firsCourseItem?.author}

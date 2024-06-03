@@ -1,6 +1,6 @@
 'use client'
 
-import { CourseCard } from '@/components/global'
+import { CourseCard, Typography } from '@/components/global'
 import { useMyListStore } from '@/store'
 
 export const SavedCoursesSet = () => {
@@ -8,7 +8,9 @@ export const SavedCoursesSet = () => {
   return (
     <div className="grid gap-4">
       <header>
-        <h2 className="text-xl font-semibold">Cursos Guardados</h2>
+        <Typography as={'h2'} size={'2xl'} className="font-semibold">
+          Cursos guardados
+        </Typography>
       </header>
 
       <main className="grid gap-y-6 tablet:grid-cols-3 laptop:grid-cols-4">
