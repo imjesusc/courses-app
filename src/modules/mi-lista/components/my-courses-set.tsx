@@ -1,6 +1,6 @@
 'use client'
 
-import { CourseCard } from '@/components/global'
+import { CourseCard, Typography } from '@/components/global'
 import {
   Carousel,
   CarouselContent,
@@ -40,7 +40,9 @@ export const MyCoursesSet = () => {
   return (
     <section className="grid gap-4">
       <header>
-        <h2 className="text-xl font-semibold">Mis Cursos</h2>
+        <Typography as={'h2'} size={'2xl'} className="font-semibold">
+          Mis Cursos
+        </Typography>
       </header>
 
       <Carousel
